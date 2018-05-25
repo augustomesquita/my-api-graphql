@@ -5,14 +5,12 @@
  */
 package com.augustomesquita.myapigraphql.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,17 +21,15 @@ import javax.persistence.Table;
 @Table(name = "_user")
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Integer age;
 
-    @OneToOne(targetEntity = Movie.class, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
+    @JoinColumn(name = "movie_id", nullable = false, updatable = false)
     private Movie movie;
-
-    @Column(name = "movie_id", updatable = false, insertable = false)
-    private Long movie_fk;
 
     protected User() {
     }
@@ -63,8 +59,7 @@ public class User {
     }
 
     public Movie getMovie() {
-        this.movie.setId(movie_fk);
-        return this.movie;
+        return movie;
     }
 
     public void setMovie(Movie movie) {

@@ -1,0 +1,9 @@
+type Movie {
+    id: ID!
+    name: String!
+    director: String!
+}
+
+type Query {
+    getAllMovies: [Movie]!
+}
