@@ -1,12 +1,3 @@
-schema {
-    query: Query
-}
-
-type Query {
-    allUser: [User]
-    user(id: Long): User
-}
-
 type User {
     id: Long
     name: String
@@ -18,4 +9,9 @@ type Movie {
     id: Long
     name: String
     director: String
+}
+
+type Query {
+    getAllUser: [User]
+    getUser(id: Long): User
 }

@@ -1,4 +1,4 @@
-package com.augustomesquita.myapigraphql.service.movie;
+package com.augustomesquita.myapigraphql.resolvers.movie;
 
 import com.augustomesquita.myapigraphql.model.Movie;
 import com.augustomesquita.myapigraphql.model.User;
