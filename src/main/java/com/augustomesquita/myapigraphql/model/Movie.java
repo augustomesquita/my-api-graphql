@@ -1,4 +1,4 @@
-package com.augustomesquita.basicstarter.model;
+package com.augustomesquita.myapigraphql.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

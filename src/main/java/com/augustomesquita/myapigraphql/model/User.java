@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.augustomesquita.basicstarter.model;
+package com.augustomesquita.myapigraphql.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

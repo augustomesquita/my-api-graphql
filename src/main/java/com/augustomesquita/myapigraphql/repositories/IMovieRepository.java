@@ -1,6 +1,6 @@
-package com.augustomesquita.basicstarter.repositories;
+package com.augustomesquita.myapigraphql.repositories;
 
-import com.augustomesquita.basicstarter.model.Movie;
+import com.augustomesquita.myapigraphql.model.Movie;
 import org.springframework.data.repository.CrudRepository;
 
 /**

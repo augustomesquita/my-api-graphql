@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.augustomesquita.basicstarter.repositories;
+package com.augustomesquita.myapigraphql.repositories;
 
-import com.augustomesquita.basicstarter.model.User;
+import com.augustomesquita.myapigraphql.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
