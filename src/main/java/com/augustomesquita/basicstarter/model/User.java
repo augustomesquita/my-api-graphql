@@ -5,10 +5,14 @@
  */
 package com.augustomesquita.basicstarter.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,11 +23,17 @@ import javax.persistence.Table;
 @Table(name = "_user")
 public class User {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     private String name;
     private Integer age;
+
+    @OneToOne(targetEntity = Movie.class, fetch = FetchType.LAZY, optional = false)
+    private Movie movie;
+
+    @Column(name = "movie_id", updatable = false, insertable = false)
+    private Long movie_fk;
 
     protected User() {
     }
@@ -52,8 +62,18 @@ public class User {
         this.age = age;
     }
 
+    public Movie getMovie() {
+        this.movie.setId(movie_fk);
+        return this.movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", age=" + age + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", age=" + age + ", movie=" + movie + '}';
     }
+
 }

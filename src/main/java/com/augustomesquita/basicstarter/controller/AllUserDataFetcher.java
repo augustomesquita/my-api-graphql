@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.augustomesquita.basicstarter.fetcher.user;
+package com.augustomesquita.basicstarter.controller;
 
 import com.augustomesquita.basicstarter.model.User;
 import com.augustomesquita.basicstarter.repositories.IUserRepository;
@@ -18,14 +18,14 @@ import org.springframework.stereotype.Component;
  * @author augusto
  */
 @Component
-public class AllUserDataFetcher implements DataFetcher<List<User>>{
+class AllUserDataFetcher implements DataFetcher<List<User>> {
 
     @Autowired
-    IUserRepository userRepository;
-    
+    private IUserRepository userRepository;
+
     @Override
     public List<User> get(DataFetchingEnvironment env) {
         return (List<User>) userRepository.findAll();
     }
-    
+
 }

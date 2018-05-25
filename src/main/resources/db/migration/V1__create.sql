@@ -8,10 +8,9 @@ CREATE TABLE movie (
 create table _user (
 	id bigserial unique primary key,
         name varchar(255),
-        age integer
-        --movie_fk bigint,
-
-        --foreign key(movie_fk) references movie(id)
+        age integer,
+        movie_id bigint,
+        foreign key(movie_id) references movie(id)
 );
 
 
@@ -24,10 +23,10 @@ INSERT INTO movie VALUES (5, 'Filme_5', 'Diretor_5');
 
 
 -- Insere usuários no banco.
-INSERT INTO _user VALUES (1, 'Augusto', 26);
-INSERT INTO _user VALUES (2, 'Edgard', 22);
-INSERT INTO _user VALUES (3, 'Vanessa', 23);
-INSERT INTO _user VALUES (4, 'Leitão', 28);
-INSERT INTO _user VALUES (5, 'Afonso', 31);
-INSERT INTO _user VALUES (6, 'Jéssica', 22);
-INSERT INTO _user VALUES (7, 'Fabiana', 24);
+INSERT INTO _user VALUES (1, 'Augusto', 26, 1);
+INSERT INTO _user VALUES (2, 'Edgard',  22, 2);
+INSERT INTO _user VALUES (3, 'Vanessa', 23, 3);
+INSERT INTO _user VALUES (4, 'Leitão',  28, 4);
+INSERT INTO _user VALUES (5, 'Afonso',  31, 5);
+INSERT INTO _user VALUES (7, 'Fabiana', 24, 1);
+INSERT INTO _user VALUES (8, 'Marcelo', 25, 2);

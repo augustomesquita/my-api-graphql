@@ -5,10 +5,9 @@
  */
 package com.augustomesquita.basicstarter.controller;
 
-import com.augustomesquita.basicstarter.fetcher.user.AllUserDataFetcher;
-import com.augustomesquita.basicstarter.fetcher.user.UserFetcher;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
+import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -35,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class JGraphqlController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(JGraphqlController.class);
+    private GraphQL graphQL;
 
     @Autowired
     private AllUserDataFetcher allUserDataFetcher;
@@ -42,10 +42,11 @@ public class JGraphqlController {
     @Autowired
     private UserFetcher userDataFetcher;
 
+    @Autowired
+    private MovieDataFetcher movieDataFetcher;
+
     @Value("classpath:user.graphqls")
     private Resource schemaUserResource;
-
-    private GraphQL graphQL;
 
     @PostConstruct
     public void loadSchema() throws IOException {
@@ -75,6 +76,7 @@ public class JGraphqlController {
                 .type("Query", typeWiring -> typeWiring
                 .dataFetcher("allUser", allUserDataFetcher)
                 .dataFetcher("user", userDataFetcher))
+                .type("User", typeWiring -> typeWiring.dataFetcher("movie", movieDataFetcher))
                 .build();
     }
 

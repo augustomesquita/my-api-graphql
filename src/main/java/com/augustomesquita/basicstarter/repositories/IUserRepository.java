@@ -6,7 +6,6 @@
 package com.augustomesquita.basicstarter.repositories;
 
 import com.augustomesquita.basicstarter.model.User;
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,5 +13,4 @@ import org.springframework.data.repository.CrudRepository;
  * @author augusto
  */
 public interface IUserRepository extends CrudRepository<User, Long> {
-    List<User> findByName(String name);
 }
