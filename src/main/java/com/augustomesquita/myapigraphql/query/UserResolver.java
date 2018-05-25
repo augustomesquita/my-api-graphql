@@ -23,11 +23,8 @@ public class UserResolver implements GraphQLResolver<User> {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UserResolver.class);
 
+    @Autowired
     private IMovieRepository movieRepository;
-
-    public UserResolver(IMovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
 
     public Movie getMovie(User user) {
         LOGGER.info("Realização de busca de filme do usuário '" + user.getName() + "' no banco.");
