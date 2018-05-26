@@ -4,6 +4,12 @@ type Movie {
     director: String!
 }
 
+# A Root Query da aplicação
 type Query {
-    getAllMovies: [Movie]!
+    getAllMovies: [Movie]
+}
+
+# A Root Mutation da aplicação
+type Mutation {
+    saveMovie(name: String!, director: String!): Movie
 }

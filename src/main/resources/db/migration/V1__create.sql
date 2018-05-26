@@ -15,18 +15,19 @@ create table _user (
 
 
 -- Insere filmes no banco.
-INSERT INTO movie VALUES (1, 'Filme_1', 'Diretor_1');
-INSERT INTO movie VALUES (2, 'Filme_2', 'Diretor_2');
-INSERT INTO movie VALUES (3, 'Filme_3', 'Diretor_3');
-INSERT INTO movie VALUES (4, 'Filme_4', 'Diretor_4');
-INSERT INTO movie VALUES (5, 'Filme_5', 'Diretor_5');
+INSERT INTO movie (name, director) VALUES ('Filme 1', 'Diretor 1');
+INSERT INTO movie (name, director) VALUES ('Filme 2', 'Diretor 2');
+INSERT INTO movie (name, director) VALUES ('Filme 3', 'Diretor 3');
+INSERT INTO movie (name, director) VALUES ('Filme 4', 'Diretor 4');
+INSERT INTO movie (name, director) VALUES ('Filme 5', 'Diretor 5');
 
 
 -- Insere usuários no banco.
-INSERT INTO _user VALUES (1, 'Augusto', 26, 1);
-INSERT INTO _user VALUES (2, 'Edgard',  22, 2);
-INSERT INTO _user VALUES (3, 'Vanessa', 23, 3);
-INSERT INTO _user VALUES (4, 'Leitão',  28, 4);
-INSERT INTO _user VALUES (5, 'Afonso',  31, 5);
-INSERT INTO _user VALUES (7, 'Fabiana', 24, 1);
-INSERT INTO _user VALUES (8, 'Marcelo', 25, 2);
+INSERT INTO _user (name, age, movie_id) VALUES ('Augusto ', 26, 1);
+INSERT INTO _user (name, age, movie_id) VALUES ('Edgard',  22, 2);
+INSERT INTO _user (name, age, movie_id) VALUES ('Vanessa', 23, 3);
+INSERT INTO _user (name, age, movie_id) VALUES ('Leitão',  28, 4);
+INSERT INTO _user (name, age, movie_id) VALUES ('Afonso',  27, 5);
+INSERT INTO _user (name, age, movie_id) VALUES ('Fabiana', 24, 1);
+INSERT INTO _user (name, age, movie_id) VALUES ('Marcelo', 25, 2);
+INSERT INTO _user (name, age, movie_id) VALUES ('José Gilson', 25, 2);

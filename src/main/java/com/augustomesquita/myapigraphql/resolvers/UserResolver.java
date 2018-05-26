@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.augustomesquita.myapigraphql.query;
+package com.augustomesquita.myapigraphql.resolvers;
 
 import com.augustomesquita.myapigraphql.model.Movie;
 import com.augustomesquita.myapigraphql.model.User;

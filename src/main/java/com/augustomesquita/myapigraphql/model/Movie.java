@@ -18,7 +18,12 @@ public class Movie {
     private String name;
     private String director;
 
-    protected Movie() {
+    public Movie() {
+    }
+
+    public Movie(String name, String director) {
+        this.name = name;
+        this.director = director;
     }
 
     @Id

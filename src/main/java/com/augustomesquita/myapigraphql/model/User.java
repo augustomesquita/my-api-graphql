@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer age;
@@ -31,7 +31,7 @@ public class User {
     @JoinColumn(name = "movie_id", nullable = false, updatable = false)
     private Movie movie;
 
-    protected User() {
+    public User() {
     }
 
     public Long getId() {
