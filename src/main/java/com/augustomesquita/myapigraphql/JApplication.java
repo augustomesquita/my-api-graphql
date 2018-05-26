@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 @SpringBootApplication
 @ComponentScan(basePackages = "com.augustomesquita.myapigraphql")

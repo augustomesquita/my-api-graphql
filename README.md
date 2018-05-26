@@ -1,4 +1,4 @@
-# API GraphQL com SpringBoot + SpringData + Flyway (PostgreSQL 10.3)
+﻿# API GraphQL com SpringBoot + SpringData + Flyway (PostgreSQL 10.3)
 Aplicação que cria uma API GraphQL juntamente com SpringBoot + SpringData + Flyway + PostgreSQL.
 O conceito e dicas sobre API GraphQL pode ser encontrado na página oficial: https://graphql.org/learn/
 
@@ -55,4 +55,15 @@ Exemplo de realização de uma Mutation no Postman (exemplo funcionando, baseado
 ![](screenshots/mutation_postman.png)
 
 
+# Carregando dados do banco de maneira eficiente com GraphQL e Spring Data
+Caso esteja usando spring data, igual a este projeto, é importante que as relações entre as entidades sejam, na maior parte das vezes, configuradas no modo "preguiçoso" para que você usuflua corretamente dos benefícios do GraphQL. Assim, caso o consumidor de sua API GraphQL informe que precisa apenas dos dados de uma determinada entidade, seu backend não precisa realizar ações extras desnecessárias no banco para carregador dados de objetos que são atributos da entidade que era realmente desejada.
+No exemplo deste projeto, a classe "Movie" é um atributo da classe "User". Sendo assim, caso o consumidor da mesma queira apenas o nome de um determinado "User", o backend não irá realizar um JOIN de "Movie" no momento de buscar as informações de "User".
+Exemplo de configuração da entidade usando Spring Data (exemplo funcionando, baseado nos dados desta aplicação):
 
+```java
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_id", nullable = false, updatable = false)
+    private Movie movie;
+```
+Isso faz com que o "User" instancie um objeto "Movie" e preencha apenas o atributo de "ID" do filme, pois o "ID" já está presente na tabela de "User" no momento da busca.
+Mas e quando o consumidor quiser dados de "Movie", como o nome do filme ou o diretor? Nesse momento as classes Resolvers são chamadas, para "resolver" as lacunas dos objetos, que em tese (caso você tenha configurado o carregamento "preguiçoso corretamente", existirão.

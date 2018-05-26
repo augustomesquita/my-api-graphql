@@ -6,6 +6,7 @@
 package com.augustomesquita.myapigraphql.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 @Entity
 @Table(name = "_user")
@@ -27,7 +28,7 @@ public class User {
     private String name;
     private Integer age;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false, updatable = false)
     private Movie movie;
 

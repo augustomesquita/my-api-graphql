@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 @Component
 public class Query implements GraphQLQueryResolver {
@@ -47,7 +47,8 @@ public class Query implements GraphQLQueryResolver {
      */
     public List<User> getAllUser() {
         LOGGER.info("Realização de busca de lista de usuários no banco.");
-        return (List<User>) userRepository.findAll();
+        List<User> teste = (List<User>) userRepository.findAll();
+        return teste;
     }
 
     /**

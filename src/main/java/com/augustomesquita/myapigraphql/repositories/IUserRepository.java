@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 public interface IUserRepository extends CrudRepository<User, Long> {
 }

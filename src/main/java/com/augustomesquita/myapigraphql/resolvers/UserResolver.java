@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 @Component
 public class UserResolver implements GraphQLResolver<User> {
