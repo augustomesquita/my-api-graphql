@@ -45,7 +45,7 @@ mutation {
 ```
 
 ## Testes através do Postman
-Embora o Postman não seja a ferramenta ideal para testes de API GraphQL. Porém, pelo fato de muita gente o usar por causa das API Rest, deixarei aqui a sinxtaxe para realizar testes através dele. Mas recomendo fortemente, caso você queira utilizar uma ferramente a parte para testes, a utilização do Insomnia (https://insomnia.rest/), pois ele já possui uma forma específica para trabalhar com API GraphQL (https://support.insomnia.rest/article/61-graphql).
+Embora o Postman não seja a ferramenta ideal para testes de API GraphQL, muita gente o usa por causa das API Rest. Por este motivo, deixarei aqui a sinxtaxe para realizar testes usando-o. Mas recomendo fortemente, caso você queira utilizar uma ferramente a parte para testes, a utilização do Insomnia (https://insomnia.rest/), pois ele já possui uma forma específica para trabalhar com API GraphQL (https://support.insomnia.rest/article/61-graphql).
 
 Exemplo de realização de uma Query (exemplo funcionando, baseado nos dados desta aplicação):
 ![](screenshots/query_postman.png)
