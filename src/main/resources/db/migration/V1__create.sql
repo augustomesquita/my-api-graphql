@@ -23,7 +23,7 @@ INSERT INTO movie (name, director) VALUES ('Filme 5', 'Diretor 5');
 
 
 -- Insere usuários no banco.
-INSERT INTO _user (name, age, movie_id) VALUES ('Augusto ', 26, 1);
+INSERT INTO _user (name, age, movie_id) VALUES ('Augusto', 26, 1);
 INSERT INTO _user (name, age, movie_id) VALUES ('Edgard',  22, 2);
 INSERT INTO _user (name, age, movie_id) VALUES ('Vanessa', 23, 3);
 INSERT INTO _user (name, age, movie_id) VALUES ('Leitão',  28, 4);
