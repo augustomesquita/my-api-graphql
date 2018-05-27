@@ -1,27 +1,28 @@
-﻿# API GraphQL com SpringBoot + SpringData + Flyway (PostgreSQL 10.3)
-Aplicação que cria uma API GraphQL juntamente com SpringBoot + SpringData + Flyway + PostgreSQL.
-O conceito e dicas sobre API GraphQL pode ser encontrado na página oficial: https://graphql.org/learn/
+﻿
+# GraphQL API with SpringBoot + SpringData + Flyway (PostgreSQL 10.3)
+Application that creates a GraphQL API together with SpringBoot + SpringData + Flyway + PostgreSQL.
+The concept and tips on GraphQL API can be found on the official page: https://graphql.org/learn/
 
-## Ações necessárias para utilização
-Para rodar a aplicação da maneira como ela já está configurada, basta criar um banco de dados com o nome 'mygraphql_db' em seu PostgreSQL na porta padrão 5432. O usuário e senha do banco devem ser 'postgres'.
+## Actions Required to Use
+To run the application the way it is already configured, simply create a database named 'mygraphql_db' in your PostgreSQL on the default port 5432. The database user and password should be 'postgres'.
 
-Caso queira realizar modificações quanto ao:
- - Tipo de banco utilizado;
- - Porta;
- - Nome do banco de dados;
- - Usuário e senha.
+If you want to make changes to:
+ - Type of database used;
+ - Port;
+ - Name of the database;
+ - User and password.
 
-Basta modificar o arquivo de propriedades da aplicação, localizado em '/resource/application.properties'.
+Just modify the application properties file, located in '/resource/application.properties'.
 
-# Testando a API Graph
-Ao executar a aplicação, dois endpoints ficarão automaticamente disponíveis. São eles o "/graphql" e o "/graphiql". 
+# Testing the Graph API
+When you run the application, two endpoints will be automatically available. These are "/graphql" and "/graphiql".
 
-/graphql: Endpoint responsável por realizar as ações, ou seja, em testes fora do "/graphiql" (que será explicado logo abaixo) ou em alguma aplicação que esteja consumindo esta API, este endpoint que deverá ser usado para realizar as requisições.
+/graphql: Endpoint responsible for performing the actions, in other words, tests outside the "/graphiql" (which will be explained below) or in some application that is consuming our API this endpoint that should be used to carry out the requests.
 
-/graphiql: Nos disponibilizará a interface gráfica GraphiQL, onde poderemos ter acesso a documentação de nossa API e também realizar Queries e Mutations de forma mais elegante, sem precisarmos recorrer a ferramentas mais verbosas para testar este tipo de API, como o Postman. Por baixo dos panos as Queries e Mutations realizadas dentro desta ferramenta, serão encaminhadas para o endpoint "/graphql".
+/graphiql: It will give us the GraphiQL (graphical interface of GraphQL) where we can access documentation of our API and also make Queries and Mutations in a more elegant way, without having to resort to more verbose tools to test this type of API like Postman. Under the wipes the Queries and Mutations performed within this tool will be forwarded to the endpoint "/graphql".
 
-## Testes através do GraphiQL (interface gráfica do GraphQL)
-Exemplo de realização de uma Query (exemplo funcionando, baseado nos dados desta aplicação) que retorna todos os usuários do banco, trazendo o nome/idade de cada um, juntamente do nome do filme favorito dos mesmos:
+## Tests through GraphiQL (Graphical interface of GraphQL)
+Example of performing a Query (example working based on the data of this application) that returns all the users of the database, bringing the name / age of each one, along with the name of the favorite movie of the same ones:
 ```js
 {
   getAllUser { 
@@ -33,7 +34,7 @@ Exemplo de realização de uma Query (exemplo funcionando, baseado nos dados des
 }
 ```
 
-Exemplo de realização de uma Mutation (exemplo funcionando, baseado nos dados desta aplicação) que cria um filme (com os dados do nome e diretor) no banco e retorna como resposta o objeto filme criado com os campos 'id, name e director' preenchidos:
+Example of performing a Mutation (example working based on the data from this application) that creates a movie (with the name and director data) in the database and returns in response the movie object created with the 'id, name and director' fields filled in:
 ```js
 mutation {
   saveMovie(name: "Filme Teste 6", director: "Diretor Teste 6") {
@@ -44,26 +45,26 @@ mutation {
 }
 ```
 
-## Testes através do Postman
-Embora o Postman não seja a ferramenta ideal para testes de API GraphQL, muita gente o usa por causa das API Rest. Por este motivo, deixarei aqui a sintaxe para realizar testes usando-o. Mas recomendo fortemente, caso você queira usar uma ferramente a parte para testes, a utilização do Insomnia (https://insomnia.rest/), pois ele já possui uma forma específica para trabalhar com API GraphQL (https://support.insomnia.rest/article/61-graphql).
+## Testing through Postman
+Although Postman is not the ideal tool for testing GraphQL APIs, a lot of people use it because of API Rest. For this reason, I will leave the syntax here to perform tests using it. But I strongly recommend, in case you want to use a handy tool for testing, the use of Insomnia (https://insomnia.rest/) because it already has a specific way to work with GraphQL API(https://support.insomnia.rest/article/61-graphql).
 
-Exemplo de realização de uma Query no Postman (exemplo funcionando, baseado nos dados desta aplicação):
+Example of performing a Query on Postman (example working, based on the data of this application):
 ![](screenshots/query_postman.png)
 
 
-Exemplo de realização de uma Mutation no Postman (exemplo funcionando, baseado nos dados desta aplicação):
+Example of performing a Mutation on Postman (example working, based on data from this application):
 ![](screenshots/mutation_postman.png)
 
 
-# Carregando dados do banco de maneira eficiente com GraphQL e Spring Data
-Caso esteja usando spring data, igual a este projeto, é importante que as relações entre as entidades sejam, na maior parte das vezes, configuradas no modo "preguiçoso" para que você usuflua corretamente dos benefícios do GraphQL. Assim, caso o consumidor de sua API GraphQL informe que precisa apenas dos dados de uma determinada entidade, seu backend não precisa realizar ações extras desnecessárias no banco para carregador dados de objetos que são atributos da entidade que era realmente desejada.
-No exemplo deste projeto, a classe "Movie" é um atributo da classe "User". Sendo assim, caso o consumidor da mesma queira apenas o nome de um determinado "User", o backend não irá realizar um JOIN de "Movie" no momento de buscar as informações de "User".
-Exemplo de configuração da entidade usando Spring Data (exemplo funcionando, baseado nos dados desta aplicação):
+# Loading database data efficiently with GraphQL and Spring Data
+If you are using spring data, just like this project, it is important that relationships between entities are often configured in "lazy" mode so that you can properly use the benefits of GraphQL. So if the consumer of your Graph API reports that only need the data of a given entity, your backend does not need to perform extra unnecessary actions on the database to load data from objects that are attributes of the entity that was actually wanted.
+In the example of this project, the "Movie" class is an attribute of the "User" class. Therefore, if the consumer wants only the name of a certain "User", the backend will not perform a "Movie" JOIN when searching for the "User" information.
+Example of entity configuration using Spring Data (example working, based on data from this application):
 
 ```java
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false, updatable = false)
     private Movie movie;
 ```
-Isso faz com que o "User" instancie um objeto "Movie" e preencha apenas o atributo de "ID" do filme, pois o "ID" já está presente na tabela de "User" no momento da busca.
-Mas e quando o consumidor quiser dados de "Movie", como o nome do filme ou o diretor? Nesse momento as classes Resolvers são chamadas, para "resolver" as lacunas dos objetos, que em tese (caso você tenha configurado o carregamento "preguiçoso corretamente", existirão.
+This way "User" will instantiate a "Movie" object and only fill the "ID" attribute of the movie since the "ID" is already present in the "User" table at the time of the search.
+But when the consumer wants "Movie" data, like the name of the movie or the director? At this point the Resolvers classes are called, to "solve" the gaps of the objects, which in theory (if you have configured the "lazy load" properly) there will be.
