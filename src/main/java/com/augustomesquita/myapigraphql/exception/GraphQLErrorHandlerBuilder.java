@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 public class GraphQLErrorHandlerBuilder {
 

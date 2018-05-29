@@ -6,6 +6,6 @@ type User {
 }
 
 extend type Query {
-    getAllUser: [User]!
+    getAllUser: [User]
     getUser(id: Long): User
 }

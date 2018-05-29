@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.augustomesquita.myapigraphql.query;
+package com.augustomesquita.myapigraphql.api;
 
 import com.augustomesquita.myapigraphql.model.Movie;
 import com.augustomesquita.myapigraphql.model.User;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author augusto
+ * @author Augusto Mesquita
  */
 @Component
 public class Query implements GraphQLQueryResolver {
@@ -31,16 +31,30 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private IMovieRepository movieRepository;
 
+    /**
+     * Retorna um usuário a partir do ID passado.
+     * @param id // Usuário do sistema.
+     * @return 
+     */
     public User getUser(Long id) {
         LOGGER.info("Realização de busca de usuário de id: " + id);
         return userRepository.findById(id).get();
     }
 
+    /**
+     * Retorna todos os usuários do sistema.
+     * @return  // Usuários do sistema.
+     */
     public List<User> getAllUser() {
         LOGGER.info("Realização de busca de lista de usuários no banco.");
-        return (List<User>) userRepository.findAll();
+        List<User> teste = (List<User>) userRepository.findAll();
+        return teste;
     }
 
+    /**
+     * Retorna todos os filmes do sistema.
+     * @return // Filmes do sistema.
+     */
     public List<Movie> getAllMovies() {
         LOGGER.info("Realização de busca de lista filmes no banco.");
         return (List<Movie>) movieRepository.findAll();
