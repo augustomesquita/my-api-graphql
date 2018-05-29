@@ -31,7 +31,7 @@ public class User {
     @JoinColumn(name = "movie_id", nullable = false, updatable = false)
     private Movie movie;
 
-    protected User() {
+    public User() {
     }
 
     public Long getId() {
